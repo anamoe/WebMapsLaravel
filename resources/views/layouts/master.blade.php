@@ -251,7 +251,7 @@
       var lineSymbol = {
         path: 'M 0,-1 0,1',
         strokeOpacity: 1,
-        strokeWeight: 12,
+        strokeWeight: 6,
         scale: 3
       };
       // var doubleLine = {
@@ -274,8 +274,8 @@
         }],
         [{
           icon: lineSymbol,
-          offset: '40%',
-          repeat: '13px'
+          offset: '10%',
+          repeat: '10px'
         }]
       ];
 

@@ -35,15 +35,24 @@ class DataJalanController extends Controller
   
 
     public function postdata(Request $request){
-        DataJalan::create([
+       $data= DataJalan::create([
             'level_jalan'=>$request->level_jalan,
             'startlatitude'=>$request->latitude,
             'startlongitude'=>$request->longitude,
             'endtlatitude'=>$request->endlatitude,
             'endtlongitude'=>$request->endlongitude,
-            
-
         ]);
+
+        if($data){
+            return 'sukses';
+
+        }else{
+            return 'gagal';
+
+        }
     }
+
+
+   
 
 }
