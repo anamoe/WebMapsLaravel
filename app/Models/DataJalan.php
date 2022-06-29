@@ -10,10 +10,11 @@ class DataJalan extends Model
     use HasFactory;
 
     protected $fillable = [
-        'startlatitude',
-        'startlongitude',
-        'endtlatitude',
-        'endtlongitude',
-        'level_jalan'
+        'start_latitude',
+        'start_longitude',
+        'end_latitude',
+        'end_longitude',
+        'level_jalan',
+        'kecepatan'
     ];
 }
