@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="{{asset('public/template/dist/css/adminlte.min.css')}}">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="{{asset('public/template/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
-
+  <script src="{{asset('public/template/plugins/splash/js-splash-2.0.min.js')}}"></script>
 
   <style>
     #map {
@@ -33,6 +33,34 @@
 </head>
 
 <body class="hold-transition layout-fixed mx-auto">
+
+<!-- Splash -->
+<script id="rendered-js">
+      var splash = new Splash({background: 'rgba(255,255,255,.9)'});
+      var custom_node = document.createElement("div");
+
+      var text = document.createElement("strong");
+      text.innerText = "Web Masp Jalan";
+
+      var img = document.createElement("img");
+      img.src = "https://s3.amazonaws.com/cdn.wp.m4ecnet/wp-content/uploads/2018/06/05041237/GitHub-logo-2-imagen.jpg";
+      Object.assign(img.style, {
+        width: '100px',
+        height: '100px',
+        'border-radius': '50%'
+      });
+
+      custom_node.appendChild(img);
+      custom_node.appendChild(text);
+
+      splash.fromCustomNode(custom_node, 2000, {
+        color: 'red',
+        'font-family': 'fantasy'
+      });
+  </script>
+
+
+<!-- /Splash -->
   <div class="wrapper mx-auto">
 
     <!-- Content Wrapper. Contains page content -->
@@ -86,36 +114,36 @@
           <!-- Main row -->
           <div class="row">
 
-        
+
 
             <!-- Left col -->
             <section class="col-lg-12 connectedSortable">
 
-            <div class="form-row">
-        <div class="col-sm-12">
+              <div class="form-row">
+                <div class="col-sm-12">
 
 
-            <form action="{{url('/')}}" method="get">
+                  <form action="{{url('/')}}" method="get">
 
-                <div class="form-group ml-1" style="display:inline-block">
+                    <div class="form-group ml-1" style="display:inline-block">
 
-                    <select name="status" type="text" class="form-control">
+                      <select name="status" type="text" class="form-control">
 
                         <option value="" selected disabled>Pilih Level Jalan</option>
                         <option value="" @if($status=='' ) {{'selected="selected"'}} @endif>Semua</option>
                         <option value="sedang" @if($status=='sedang' ) {{'selected="selected"'}} @endif>Sedang</option>
                         <option value="rusak" @if($status=='rusak' ) {{'selected="selected"'}} @endif>Rusak</option>
 
-                    </select>
+                      </select>
 
+                    </div>
+                    <button type="submit" class="btn btn-primary" title="Filter"><i class="fas fa-filter"></i></button>
+                    <a class="btn btn-primary" href="{{url('/')}}" title="Reset Filter"><i class="fas fa-redo-alt"></i></a>
+
+                  </form>
                 </div>
-                <button type="submit" class="btn btn-primary" title="Filter"><i class="fas fa-filter"></i></button>
-                <a class="btn btn-primary" href="{{url('/')}}" title="Reset Filter"><i class="fas fa-redo-alt"></i></a>
 
-            </form>
-        </div>
-
-    </div>
+              </div>
               <div class="col-md-12 col-xs-12 map">
                 <div id="map" style="border-radius: 15px;" class="shadow"></div>
 
@@ -191,7 +219,8 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.js" integrity="sha512-MNW6IbpNuZZ2VH9ngFhzh6cUt8L/0rSVa60F8L22K1H72ro4Ki3M/816eSDLnhICu7vwH/+/yb8oB3BtBLhMsA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDv-h2II7DbFQkpL9pDxNRq3GWXqS5Epts&callback=initialize" type="text/javascript"></script>
-<!-- AIzaSyATLas4hCAqv4Cyyt_CxYvzUS66vTOt6ds -->
+  <!-- AIzaSyATLas4hCAqv4Cyyt_CxYvzUS66vTOt6ds -->
+
   <script>
     var geocoder;
     var map;
