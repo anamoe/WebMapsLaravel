@@ -40,7 +40,7 @@
       var custom_node = document.createElement("div");
 
       var text = document.createElement("strong");
-      text.innerText = "Web Masp Jalan";
+      text.innerText = "Web Maps Jalan";
 
       var img = document.createElement("img");
       // img.src = "https://s3.amazonaws.com/cdn.wp.m4ecnet/wp-content/uploads/2018/06/05041237/GitHub-logo-2-imagen.jpg";
