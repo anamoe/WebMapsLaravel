@@ -43,7 +43,7 @@
       text.innerText = "Web Masp Jalan";
 
       var img = document.createElement("img");
-      img.src = "https://s3.amazonaws.com/cdn.wp.m4ecnet/wp-content/uploads/2018/06/05041237/GitHub-logo-2-imagen.jpg";
+      // img.src = "https://s3.amazonaws.com/cdn.wp.m4ecnet/wp-content/uploads/2018/06/05041237/GitHub-logo-2-imagen.jpg";
       Object.assign(img.style, {
         width: '100px',
         height: '100px',
