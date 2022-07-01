@@ -59,6 +59,7 @@
         'border-radius': '50%'
     });
 
+
     custom_node.appendChild(img);
     custom_node.appendChild(text);
 
@@ -216,6 +217,7 @@
     <script>
     var geocoder;
     var map;
+    var z;
 
     $("select[name='status']").change(function() {
         initialize()
