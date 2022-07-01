@@ -53,6 +53,7 @@
     var img = document.createElement("img");
     img.src = "https://s3.amazonaws.com/cdn.wp.m4ecnet/wp-content/uploads/2018/06/05041237/GitHub-logo-2-imagen.jpg";
     Object.assign(img.style, {
+      // img.src = "https://s3.amazonaws.com/cdn.wp.m4ecnet/wp-content/uploads/2018/06/05041237/GitHub-logo-2-imagen.jpg";
         width: '100px',
         height: '100px',
         'border-radius': '50%'
