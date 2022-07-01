@@ -23,13 +23,16 @@ class DataJalanController extends Controller
             
         }
 
-     
+ 
         $titik_total = DataJalan::count();
 
         $data_baru = DataJalan::orderBy('id','DESC')->first();
+
+        if($request->has('status')){
+            return $jalan;
+        }
         return view('layouts.master',compact('jalan','titik_total','data_baru','status'));
     }
-
 
 
   
