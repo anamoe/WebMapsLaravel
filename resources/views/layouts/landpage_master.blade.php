@@ -2,6 +2,18 @@
 <html lang="en">
 
 <head>
+<style>
+
+
+
+
+/* #content {
+ background-color: blue;
+ 
+} */
+
+
+</style>
 
     @include('layouts.admin_head')
     <link rel="apple-touch-icon" sizes="76x76" class="rounded-circle" href="{{asset('')}}">
@@ -32,7 +44,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        @include('layouts.admin_sidebar')
+     
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -42,7 +54,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-                @include('layouts.admin_top')
+          
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
@@ -58,9 +70,7 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                @include('layouts.admin_footer')
-            </footer>
+           
             <!-- End of Footer -->
 
         </div>
@@ -74,24 +84,7 @@
         <i class="fas fa-angle-up"></i>
     </a>
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Logout ?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <!-- <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div> -->
-                <div class="modal-footer">
-                    <button class="btn btn-danger" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="{{url('logout')}}">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
+
 
     <!-- Bootstrap core JavaScript-->
     <script src="{{asset('public/admin/vendor/jquery/jquery.min.js')}}"></script>

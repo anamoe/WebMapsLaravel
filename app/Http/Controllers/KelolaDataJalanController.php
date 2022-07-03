@@ -27,6 +27,7 @@ class KelolaDataJalanController extends Controller
     public function create()
     {
         //
+        return view('layouts.createmaps');
     }
 
     /**
@@ -44,7 +45,7 @@ class KelolaDataJalanController extends Controller
             'start_longitude'=>$request->start_longitude,
             'end_latitude'=>$request->end_latitude,
             'end_longitude'=>$request->end_longitude,
-            'kecepatan'=>$request->kecepatan.'km/jam',
+            'kecepatan'=>$request->kecepatan,
         ]);
         return redirect('/datajalan')->with('message','Data berhasil ditambahkan');
     }
@@ -58,6 +59,8 @@ class KelolaDataJalanController extends Controller
     public function show($id)
     {
         //
+        $data = DataJalan::find($id);
+        return view('layouts.editmaps',compact('data','id'));
     }
 
     /**
@@ -69,6 +72,8 @@ class KelolaDataJalanController extends Controller
     public function edit($id)
     {
         //
+        $data = DataJalan::find($id);
+        return view('layouts.editmaps',compact('data','id'));
     }
 
     /**
@@ -89,6 +94,7 @@ class KelolaDataJalanController extends Controller
             'start_longitude'=>$request->start_longitude,
             'end_latitude'=>$request->end_latitude,
             'end_longitude'=>$request->end_longitude,
+            'kecepatan'=>$request->kecepatan,
         ]);
 
       
@@ -107,5 +113,10 @@ class KelolaDataJalanController extends Controller
         //
         DataJalan::where('id',$id)->delete();
         return redirect()->back()->with('message','Data berhasil dihapus');
+    }
+
+    public function jalan_landpage(){
+        $jalan = DataJalan::all();
+        return view('layouts.list-jalan',compact('jalan'));
     }
 }

@@ -38,5 +38,14 @@ Route::middleware(['middleware' => 'auth'])->group(function () {
 
   
     Route::resource('datajalan', KelolaDataJalanController::class);
-
+    Route::get('createmaps',function(){
+        return view('layouts.mapscoba');
+    });
+    
 });
+
+   Route::get('c',function(){
+        return view('layouts.createmaps');
+    });
+
+    Route::get('list-jalan',[KelolaDataJalanController::class,'jalan_landpage']);

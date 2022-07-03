@@ -32,7 +32,7 @@ class CreateDataJalansTable extends Migration
             'end_latitude'=>'-8.481046',
             'end_longitude'=>'114.331646',
             'level_jalan'=>'rusak',
-            'kecepatan'=>'20 km/jam',
+            'kecepatan'=>'20',
             'created_at'=>'2022-03-21 04:29:46',
             'updated_at'=>'2022-03-21 04:29:46'
 
@@ -46,7 +46,7 @@ class CreateDataJalansTable extends Migration
             'end_latitude'=>'-8.471441',
             'end_longitude'=>'114.321931',
             'level_jalan'=>'sedang',
-            'kecepatan'=>'40 km/jam',
+            'kecepatan'=>'40',
             'created_at'=>'2022-03-21 04:29:46',
             'updated_at'=>'2022-03-21 04:29:46'
 
@@ -60,7 +60,7 @@ class CreateDataJalansTable extends Migration
             'end_latitude'=>'-8.479167',
             'end_longitude'=>'114.334489',
             'level_jalan'=>'rusak',
-            'kecepatan'=>'20 km/jam',
+            'kecepatan'=>'20',
             'created_at'=>'2022-03-21 04:29:46',
             'updated_at'=>'2022-03-21 04:29:46'
 

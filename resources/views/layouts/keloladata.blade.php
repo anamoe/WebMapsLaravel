@@ -14,9 +14,12 @@ Kelola Data Jalan
         <div class="card">
             <div class="card-header">
                 <div class="text-right">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahData">
+                    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahData">
                         <span class="fas fa-plus"> Tambah</span>
-                    </button>
+                    </button> -->
+                    <a href="{{url('createmaps')}}" class="btn btn-primary" >
+                        <span class="fas fa-plus"> Tambah</span>
+                    </a>
                 </div>
             </div>
             <div class="card-body">
@@ -48,8 +51,11 @@ Kelola Data Jalan
                                         <td class="text-center">{{$j->level_jalan}}</td>
                                         <td class="text-center">
 
-                                            <a href="#" data-toggle="modal" data-target="#editData" onclick="edit('{{$j->id}}','{{$j->start_latitude}}','{{$j->end_latitude}}','{{$j->start_longitude}}',
+                                            <!-- <a href="{{url('datajalan',$j->id)}}" data-toggle="modal" data-target="#editData" onclick="edit('{{$j->id}}','{{$j->start_latitude}}','{{$j->end_latitude}}','{{$j->start_longitude}}',
                                             '{{$j->end_longitude}}','{{$j->kecepatan}}','{{$j->level_jalan}}')" class="btn btn-sm btn-warning mb-1" data-placement="bottom" title="Edit" style="color: white;"><i class="fa fa-edit"></i></a>
+                                         -->
+                                         <a href="{{url('datajalan',$j->id)}}"  class="btn btn-sm btn-warning mb-1" data-placement="bottom" title="Edit" style="color: white;"><i class="fa fa-edit"></i></a>
+                                            
                                             <a href="#" data-toggle="modal" data-target="#deleteData" onclick="hapus('{{$j->id}}')" class="btn btn-sm btn-danger" data-placement="bottom" title="Hapus" style="color: white;">
                                                 <i class="fa fa-trash"></i></a>
                                         </td>

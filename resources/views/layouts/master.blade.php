@@ -7,8 +7,7 @@
     <title>Web Maps Jalan</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{asset('public/template/plugins/fontawesome-free/css/all.min.css')}}">
     <!-- Ionicons -->
@@ -26,15 +25,13 @@
     <script src="{{asset('public/template/plugins/splash/js-splash-2.0.min.js')}}"></script>
     <script src="{{asset('public/template/plugins/jquery/jquery.min.js')}}"></script>
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.js"
-        integrity="sha512-MNW6IbpNuZZ2VH9ngFhzh6cUt8L/0rSVa60F8L22K1H72ro4Ki3M/816eSDLnhICu7vwH/+/yb8oB3BtBLhMsA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.js" integrity="sha512-MNW6IbpNuZZ2VH9ngFhzh6cUt8L/0rSVa60F8L22K1H72ro4Ki3M/816eSDLnhICu7vwH/+/yb8oB3BtBLhMsA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <style>
-    #map {
-        height: 600px;
+        #map {
+            height: 600px;
 
-    }
+        }
     </style>
 </head>
 
@@ -42,31 +39,31 @@
 
     <!-- Splash -->
     <script id="rendered-js">
-    var splash = new Splash({
-        background: 'rgba(255,255,255,.9)'
-    });
-    var custom_node = document.createElement("div");
+        var splash = new Splash({
+            background: 'rgba(255,255,255,.9)'
+        });
+        var custom_node = document.createElement("div");
 
-    var text = document.createElement("strong");
-    text.innerText = "Web Masp Jalan";
+        var text = document.createElement("strong");
+        text.innerText = "Web Masp Jalan";
 
-    var img = document.createElement("img");
-    img.src = "https://s3.amazonaws.com/cdn.wp.m4ecnet/wp-content/uploads/2018/06/05041237/GitHub-logo-2-imagen.jpg";
-    Object.assign(img.style, {
-      // img.src = "https://s3.amazonaws.com/cdn.wp.m4ecnet/wp-content/uploads/2018/06/05041237/GitHub-logo-2-imagen.jpg";
-        width: '100px',
-        height: '100px',
-        'border-radius': '50%'
-    });
+        var img = document.createElement("img");
+        img.src = "https://s3.amazonaws.com/cdn.wp.m4ecnet/wp-content/uploads/2018/06/05041237/GitHub-logo-2-imagen.jpg";
+        Object.assign(img.style, {
+            // img.src = "https://s3.amazonaws.com/cdn.wp.m4ecnet/wp-content/uploads/2018/06/05041237/GitHub-logo-2-imagen.jpg";
+            width: '100px',
+            height: '100px',
+            'border-radius': '50%'
+        });
 
 
-    custom_node.appendChild(img);
-    custom_node.appendChild(text);
+        custom_node.appendChild(img);
+        custom_node.appendChild(text);
 
-    splash.fromCustomNode(custom_node, 2000, {
-        color: 'red',
-        'font-family': 'fantasy'
-    });
+        splash.fromCustomNode(custom_node, 2000, {
+            color: 'red',
+            'font-family': 'fantasy'
+        });
     </script>
 
 
@@ -129,10 +126,11 @@
                         <!-- Left col -->
                         <section class="col-lg-12 connectedSortable">
 
-                            <div class="form-row">
-                                <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-sm-3">
 
-
+                                </div>
+                                <div class="col-sm-3">
                                     <form action="{{url('/')}}" method="get">
 
                                         <div class="form-group ml-1" style="display:inline-block">
@@ -142,31 +140,30 @@
                                                 <option value="" selected disabled>Pilih Level Jalan</option>
                                                 <option value="" @if($status=='' ) {{'selected="selected"'}} @endif>
                                                     Semua</option>
-                                                <option value="sedang" @if($status=='sedang' ) {{'selected="selected"'}}
-                                                    @endif>Sedang</option>
-                                                <option value="rusak" @if($status=='rusak' ) {{'selected="selected"'}}
-                                                    @endif>Rusak</option>
+                                                <option value="sedang" @if($status=='sedang' ) {{'selected="selected"'}} @endif>Sedang</option>
+                                                <option value="rusak" @if($status=='rusak' ) {{'selected="selected"'}} @endif>Rusak</option>
 
                                             </select>
 
                                         </div>
-                                        <button type="submit" class="btn btn-primary" title="Filter"><i
-                                                class="fas fa-filter"></i></button>
-                                        <a class="btn btn-primary" href="{{url('/')}}" title="Reset Filter"><i
-                                                class="fas fa-redo-alt"></i></a>
 
                                     </form>
                                 </div>
+                                <div class="col-sm-3">
 
+                                    <a class="btn btn-primary" href="{{url('list-jalan')}}" title="">Riwayat Data Jalan</a>
+                                </div>
+                                <div class="col-sm-3">
+
+                                </div>
                             </div>
+                            <br>
+
+
+
+
                             <div class="col-md-12 col-xs-12 map">
                                 <div id="map" style="border-radius: 15px;" class="shadow"></div>
-
-
-
-
-
-
 
                             </div>
                         </section>
@@ -198,11 +195,7 @@
         </aside>
         <!-- /.control-sidebar -->
     </div>
-    <!-- ./wrapper -->
 
-    <!-- jQuery -->
-
-    <!-- jQuery UI 1.11.4 -->
     <script src="{{asset('public/template/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
     <!-- <script src="{{asset('public/template/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script> -->
 
@@ -233,7 +226,7 @@
         var map = new google.maps.Map(
             document.getElementById("map"), {
                 center: new google.maps.LatLng(-8.478316, 114.335231),
-                zoom: 13,
+                zoom: 11,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             });
 
@@ -244,12 +237,7 @@
             strokeWeight: 6,
             scale: 3
         };
-        // var doubleLine = {
-        //   path: 'M 0.5,-1 0.5,1 M -0.5,-1 -0.5,1',
-        //   strokeOpacity: 4,
-        //   strokeWeight: 8,
-        //   scale: 4
-        // };
+
         var color = ["#26ff00", "#998500", "#FF0000"];
         var icons = [
             [{
@@ -270,19 +258,17 @@
         ];
 
 
-
-
         axios.get("{{url('/')}}/?status=" + $("select[name='status']").val())
             .then(res => {
 
                 res.data.forEach(data => {
                     if (data.level_jalan == "rusak") {
-                        array.push([data.kecepatan, data.start_latitude, data.start_longitude]);
+                        array.push([data.kecepatan+'    KM/JAM', data.start_latitude, data.start_longitude]);
                         dataKoordinat.push([data.start_latitude, data.start_longitude, data
                             .end_latitude, data.end_longitude
                         ]);
                     } else {
-                        array2.push([data.kecepatan, data.start_latitude, data.start_longitude]);
+                        array2.push([data.kecepatan+'   KM/JAM', data.start_latitude, data.start_longitude]);
                         dataKoordinat2.push([data.start_latitude, data.start_longitude, data
                             .end_latitude, data.end_longitude
                         ]);
