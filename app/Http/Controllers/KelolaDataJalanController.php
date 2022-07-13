@@ -15,8 +15,8 @@ class KelolaDataJalanController extends Controller
     public function index()
     {
         //
-        $jalan = DataJalan::all();
-        return view('layouts.keloladata',compact('jalan'));
+        $jalan = DataJalan::where('status_verifikasi','disetujui')->get();
+        return view('admin.verifikasi.keloladata',compact('jalan'));
     }
 
     /**
@@ -27,7 +27,7 @@ class KelolaDataJalanController extends Controller
     public function create()
     {
         //
-        return view('layouts.createmaps');
+        return view('admin.verifikasi.createmaps');
     }
 
     /**
@@ -46,6 +46,9 @@ class KelolaDataJalanController extends Controller
             'end_latitude'=>$request->end_latitude,
             'end_longitude'=>$request->end_longitude,
             'kecepatan'=>$request->kecepatan,
+            'status_verifikasi'=>'disetujui',
+            'nama_penginput'=>$request->nama
+
         ]);
         return redirect('/datajalan')->with('message','Data berhasil ditambahkan');
     }
@@ -60,7 +63,7 @@ class KelolaDataJalanController extends Controller
     {
         //
         $data = DataJalan::find($id);
-        return view('layouts.editmaps',compact('data','id'));
+        return view('admin.verifikasi.editmaps',compact('data','id'));
     }
 
     /**
@@ -73,7 +76,7 @@ class KelolaDataJalanController extends Controller
     {
         //
         $data = DataJalan::find($id);
-        return view('layouts.editmaps',compact('data','id'));
+        return view('admin.verifikasi.editmaps',compact('data','id'));
     }
 
     /**
@@ -117,6 +120,29 @@ class KelolaDataJalanController extends Controller
 
     public function jalan_landpage(){
         $jalan = DataJalan::all();
-        return view('layouts.list-jalan',compact('jalan'));
+        return view('landpage.list-jalan',compact('jalan'));
     }
+
+    public function getdata_belum_acc(){
+        $jalan = DataJalan::where('status_verifikasi','belum')->get();
+        return view('admin.belumverifikasi.keloladata_belum_acc',compact('jalan'));
+    }
+
+    public function getdata_belum_acc_show($id){
+        $data = DataJalan::find($id);
+        return view('admin.belumverifikasi.editmaps',compact('data','id'));
+
+    }
+
+    public function update_status_belum_acc(Request $request, $id){
+        $jalan = DataJalan::find($id);
+        
+        $jalan->update([
+            'status_verifikasi'=>'disetujui',
+        ]);
+        
+        return redirect('/list-jalan_belum_acc')->with('message','Data berhasil disetujui oleh admin');
+    }
+
+
 }

@@ -39,13 +39,17 @@ Route::middleware(['middleware' => 'auth'])->group(function () {
   
     Route::resource('datajalan', KelolaDataJalanController::class);
     Route::get('createmaps',function(){
-        return view('layouts.mapscoba');
+        return view('admin.verifikasi.create-maps');
     });
+    Route::get('list-jalan_belum_acc',[KelolaDataJalanController::class,'getdata_belum_acc']);
+
+    Route::get('list-jalan_show/{id}',[KelolaDataJalanController::class,'getdata_belum_acc_show']);
+    Route::post('update_jalan_acc/{id}',[KelolaDataJalanController::class,'update_status_belum_acc']);
+
     
 });
 
-   Route::get('c',function(){
-        return view('layouts.createmaps');
-    });
+
 
     Route::get('list-jalan',[KelolaDataJalanController::class,'jalan_landpage']);
+

@@ -14,7 +14,12 @@
     <li class="nav-item {{ Request::segment(1) === 'datajalan' ? 'active' : null }}">
         <a class="nav-link" href="{{url('datajalan')}}">
             <i class="fas fa-fw fa-home"></i>
-            <span>Home</span></a>
+            <span>Data Jalan Terverifikasi</span></a>
+    </li>
+    <li class="nav-item {{ Request::segment(1) === 'list-jalan_belum_acc' ? 'active' : null }}">
+        <a class="nav-link" href="{{url('list-jalan_belum_acc')}}">
+            <i class="fas fa-fw fa-home"></i>
+            <span>Data Jalan Belum Verifikasi</span></a>
     </li>
 
 

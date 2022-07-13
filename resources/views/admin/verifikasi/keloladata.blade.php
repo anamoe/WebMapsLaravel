@@ -17,7 +17,7 @@ Kelola Data Jalan
                     <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahData">
                         <span class="fas fa-plus"> Tambah</span>
                     </button> -->
-                    <a href="{{url('createmaps')}}" class="btn btn-primary" >
+                    <a href="{{url('createmaps')}}" class="btn btn-primary">
                         <span class="fas fa-plus"> Tambah</span>
                     </a>
                 </div>
@@ -30,11 +30,13 @@ Kelola Data Jalan
 
                                 <thead>
                                     <th style="text-align:center;">No.</th>
-                                    <th style="text-align:center;">Lat Awal</th>
-                                    <th style="text-align:center;">Lat AKhir</th>
+                                    <th style="text-align:center;">Lat Awal</th>                                    
                                     <th style="text-align:center;">Long Awal</th>
+                                    <th style="text-align:center;">Lat AKhir</th>
                                     <th style="text-align:center;">Long Akhir</th>
+                                    <th style="text-align:center;">Level Jalan</th>
                                     <th style="text-align:center;">Status</th>
+                                    <th style="text-align:center;">Nama</th>
                                     <th style="text-align:center;">Aksi</th>
 
                                 </thead>
@@ -44,18 +46,20 @@ Kelola Data Jalan
 
                                     <tr>
                                         <td class="text-center">{{$loop->iteration}}</td>
-                                        <td class="text-center">{{$j->start_latitude}}</td>
-                                        <td class="text-center">{{$j->end_latitude}}</td>
-                                        <td class="text-center">{{$j->start_longitude}}</td>
-                                        <td class="text-center">{{$j->end_longitude}}</td>
+                                        <td class="text-center"> {{ Str::limit($j->start_latitude, 5) }}</td>
+                                        <td class="text-center">{{ Str::limit($j->start_longitude, 5)}}</td>
+                                        <td class="text-center">{{ Str::limit($j->end_latitude, 5)}}</td>
+                                        <td class="text-center">{{ Str::limit($j->end_longitude, 5)}}</td>
                                         <td class="text-center">{{$j->level_jalan}}</td>
+                                        <td class="text-center">{{$j->status_verifikasi}}</td>
+                                        <td class="text-center">{{$j->nama_penginput}}</td>
                                         <td class="text-center">
 
                                             <!-- <a href="{{url('datajalan',$j->id)}}" data-toggle="modal" data-target="#editData" onclick="edit('{{$j->id}}','{{$j->start_latitude}}','{{$j->end_latitude}}','{{$j->start_longitude}}',
                                             '{{$j->end_longitude}}','{{$j->kecepatan}}','{{$j->level_jalan}}')" class="btn btn-sm btn-warning mb-1" data-placement="bottom" title="Edit" style="color: white;"><i class="fa fa-edit"></i></a>
                                          -->
-                                         <a href="{{url('datajalan',$j->id)}}"  class="btn btn-sm btn-warning mb-1" data-placement="bottom" title="Edit" style="color: white;"><i class="fa fa-edit"></i></a>
-                                            
+                                            <a href="{{url('datajalan',$j->id)}}" class="btn btn-sm btn-warning mb-1" data-placement="bottom" title="Edit" style="color: white;"><i class="fa fa-edit"></i></a>
+
                                             <a href="#" data-toggle="modal" data-target="#deleteData" onclick="hapus('{{$j->id}}')" class="btn btn-sm btn-danger" data-placement="bottom" title="Hapus" style="color: white;">
                                                 <i class="fa fa-trash"></i></a>
                                         </td>

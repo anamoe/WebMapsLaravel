@@ -15,6 +15,8 @@ class DataJalan extends Model
         'end_latitude',
         'end_longitude',
         'level_jalan',
-        'kecepatan'
+        'kecepatan',
+        'status_verifikasi',
+        'nama_penginput'
     ];
 }

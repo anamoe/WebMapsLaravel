@@ -1,4 +1,4 @@
-@extends('layouts.landpage_master')
+@extends('landpage.landpage_master')
 
 @section('title')
 History Data Jalan

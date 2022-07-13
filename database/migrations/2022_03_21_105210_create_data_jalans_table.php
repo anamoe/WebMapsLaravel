@@ -22,6 +22,8 @@ class CreateDataJalansTable extends Migration
             $table->string('end_longitude');
             $table->string('level_jalan');
             $table->string('kecepatan');
+            $table->string('nama_penginput');
+            $table->string('status_verifikasi');
             $table->timestamps();
         });
 
@@ -33,6 +35,8 @@ class CreateDataJalansTable extends Migration
             'end_longitude'=>'114.331646',
             'level_jalan'=>'rusak',
             'kecepatan'=>'20',
+            'status_verifikasi'=>'disetujui',
+            'nama_penginput'=>'admin',
             'created_at'=>'2022-03-21 04:29:46',
             'updated_at'=>'2022-03-21 04:29:46'
 
@@ -47,6 +51,8 @@ class CreateDataJalansTable extends Migration
             'end_longitude'=>'114.321931',
             'level_jalan'=>'sedang',
             'kecepatan'=>'40',
+            'nama_penginput'=>'admin',
+            'status_verifikasi'=>'disetujui',
             'created_at'=>'2022-03-21 04:29:46',
             'updated_at'=>'2022-03-21 04:29:46'
 
@@ -61,6 +67,8 @@ class CreateDataJalansTable extends Migration
             'end_longitude'=>'114.334489',
             'level_jalan'=>'rusak',
             'kecepatan'=>'20',
+            'nama_penginput'=>'admin',
+            'status_verifikasi'=>'disetujui',
             'created_at'=>'2022-03-21 04:29:46',
             'updated_at'=>'2022-03-21 04:29:46'
 
