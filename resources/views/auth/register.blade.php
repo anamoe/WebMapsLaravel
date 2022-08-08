@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Kursus Speedy</title>
+    <title>WEBMAPS JALAN</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{asset('public/admin/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -38,7 +38,7 @@
                                 <div class="text-center">
                                     <!-- <img class="rounded-circle" src="{{asset('public/admin/logo2.jpg')}}" width="100"
                                         height="auto" alt=""> -->
-                                    <h1 class="h4 text-gray-900 mb-4">DAFTAR SISWA KURSUS</h1>
+                                    <h1 class="h4 text-gray-900 mb-4">DAFTAR PELAPOR</h1>
                                 </div>
                                 @if(session()->has('error'))
                                 <div class="alert alert-danger" role="alert" id="notif">
@@ -48,11 +48,14 @@
                                     <span data-notify="message">{{session()->get('error')}}</span>
                                 </div>
                                 @endif
-                                <form class="user" action="{{route('register')}}" method="POST" enctype="multipart/form-data">
+                                <form class="user" action="{{url('register')}}" method="POST" enctype="multipart/form-data">
                                     @csrf
+
+
                                     <div class="form-group">
-                                        <input type="text" required class="form-control form-control-user" id="nama" name="nama" placeholder="Nama Lengkap...">
+                                        <input type="text" required class="form-control form-control-user" id="email" name="email" placeholder="Email...">
                                     </div>
+                                    
                                     <div class="form-group">
                                         <input type="text" required class="form-control form-control-user" id="username" name="username" placeholder="Username...">
                                     </div>
@@ -60,14 +63,11 @@
                                         <input type="password" required class="form-control form-control-user" id="password" name="password" placeholder="Password...">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" required class="form-control form-control-user" id="kpassword" name="kpassword" placeholder="Konfirmasi Password...">
+                                        <input type="password" required class="form-control form-control-user" id="konfirmasi_password" name="konfirmasi_password" placeholder="Konfirmasi Password...">
                                     </div>
-                                    <div class="form-group">
-                                        <input type="text" required class="form-control form-control-user" id="alamat" name="alamat" placeholder="Alamat Rumah...">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" required class="form-control form-control-user" id="nohp" name="nohp" placeholder="No. Handphone...">
-                                    </div>
+                                    
+                                   
+                                  
                                     <div class="text-center">
                                         <button type="submit" class="btn btn-primary"><a>
                                                 DAFTAR
@@ -76,27 +76,26 @@
 
                                     </div>
                                 </form>
-                                <hr>
-                                
-                                    <div class="text-center">
-                            <a href="{{url('register')}}"> <button  type="submit" class="btn btn-danger">
-                                    RESET
-                                   
-                                </button>
-                                </a>
-                            </div>
+                              
                             </div>
 
-                            <center>
-                                <h1 class="h4 text-gray-900 mb-4">Sudah Mempunyai Akun ?</h1>
-                            </center>
+                            
+                            <div class="row">
+                            <div class="col-3">
+                            </div>
+                                <div class="col-3">
+                                    <a href="{{url('login')}}"> <button type="submit" class="btn btn-primary">
+                                            LOGIN
+                                        </button>
+                                    </a>
+                                </div>
+                                <div class="col-3">
+                                    <a href="{{url('/')}}"> <button type="submit" class="btn btn-primary">
+                                            HOME
 
-                            <div class="text-center">
-                            <a href="{{url('login')}}"> <button  type="submit" class="btn btn-primary">
-                                       LOGIN
-                                   
-                                </button>
-                                </a>
+                                        </button>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>

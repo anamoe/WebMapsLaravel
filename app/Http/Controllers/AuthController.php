@@ -34,11 +34,25 @@ class AuthController extends Controller
         }
 
 
-        if (User::where('username', '=', $input['username'])->first() == true) {
+
+
+        if (User::where('username', '=', $input['username'])->orWhere('email',$input['username'])->first() == true) {
             if (auth()->attempt(array('username' => $input['username'], 'password' => $input['password']))) {
+
+                switch (Auth::user()->role) {
+                    case 'pelapor':
+                        return redirect('/pelapor-datajalan')->with('message', 'Berhasil Login');
+                        break;
+                    case 'admin':
+                        return redirect('/datajalan')->with('message', 'Berhasil Login');
+                        break;         
+                    default:
+                        return redirect('/login');
+                        break;
+                }
                
                 
-                return redirect('/datajalan')->with('message', 'Berhasil Login');;
+                // return redirect('/datajalan')->with('message', 'Berhasil Login');
                 
             } else {
                 return redirect()->back()
@@ -56,5 +70,33 @@ class AuthController extends Controller
 
         Auth::logout();
         return redirect('/login');
+    }
+
+    public function postregister(Request $request)
+    {
+
+        
+        if($request->konfirmasi_password != $request->password){
+            return redirect()->back()
+                ->with('error', 'Konfirmasi Password tidak sama');
+        }
+
+        if (User::where('username', '=', $request->username)->first() == false) {
+            $request->merge([
+                'role' => 'pelapor',
+                'password' => bcrypt($request->password),    
+                'email' => $request->email,        
+                
+            ]);
+
+            User::create($request->except(['_token']));
+           
+
+            return redirect('login')->with('message', 'Berhasil Mendaftar');
+            // return $i;
+        } else {
+            // return "eror";
+            return redirect()->back()->with('error', 'username sudah terdaftar');
+        }
     }
 }

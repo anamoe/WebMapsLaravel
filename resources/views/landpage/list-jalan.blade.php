@@ -34,6 +34,7 @@ History Data Jalan
                                     <th style="text-align:center;">Long Awal</th>
                                     <th style="text-align:center;">Long Akhir</th>
                                     <th style="text-align:center;">Status</th>
+                                    <th style="text-align:center;">Lihat Maps</th>
                               
 
                                 </thead>
@@ -48,6 +49,13 @@ History Data Jalan
                                         <td class="text-center">{{$j->start_longitude}}</td>
                                         <td class="text-center">{{$j->end_longitude}}</td>
                                         <td class="text-center">{{$j->level_jalan}}</td>
+                                        <td class="text-center">
+
+                                      
+                                        <a href="{{url('list-jalan',$j->id)}}" class="btn btn-sm btn-primary mb-1" data-placement="bottom" title="Edit" style="color: white;"><i class="fas fa-map-marker-alt"></i></a>
+
+                                        </td>
+
                                        
 
 

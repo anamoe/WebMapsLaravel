@@ -1,7 +1,7 @@
 @extends('layouts.admin_master')
 
 @section('title')
-Kelola Data Jalan Dari Hardware
+Kelola Data Jalan
 @endsection
 
 @section('content')
@@ -17,9 +17,9 @@ Kelola Data Jalan Dari Hardware
                     <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahData">
                         <span class="fas fa-plus"> Tambah</span>
                     </button> -->
-                    <!-- <a href="{{url('createmaps')}}" class="btn btn-primary">
+                    <a href="{{url('create-laporan')}}" class="btn btn-primary">
                         <span class="fas fa-plus"> Tambah</span>
-                    </a> -->
+                    </a>
                 </div>
             </div>
             <div class="card-body">
@@ -28,8 +28,7 @@ Kelola Data Jalan Dari Hardware
                         <div class="table-responsive">
                             <table class="table" id="myTable">
 
-                           
-                            <thead>
+                                <thead>
                                     <th style="text-align:center;">No.</th>
                                     <th style="text-align:center;">Lat Awal</th>                                    
                                     <th style="text-align:center;">Long Awal</th>
@@ -37,7 +36,7 @@ Kelola Data Jalan Dari Hardware
                                     <th style="text-align:center;">Long Akhir</th>
                                     <th style="text-align:center;">Level Jalan</th>
                                     <th style="text-align:center;">Status</th>
-                                    <th style="text-align:center;">Pelapor</th>
+                                    <!-- <th style="text-align:center;">Nama</th> -->
                                     <th style="text-align:center;">Aksi</th>
 
                                 </thead>
@@ -53,13 +52,11 @@ Kelola Data Jalan Dari Hardware
                                         <td class="text-center">{{ Str::limit($j->end_longitude, 5)}}</td>
                                         <td class="text-center">{{$j->level_jalan}}</td>
                                         <td class="text-center">{{$j->status_verifikasi}}</td>
-                                        <td class="text-center">{{$j->username}}</td>
+                                        <!-- <td class="text-center">{{$j->nama_penginput}}</td> -->
                                         <td class="text-center">
 
-                                            <!-- <a href="{{url('datajalan',$j->id)}}" data-toggle="modal" data-target="#editData" onclick="edit('{{$j->id}}','{{$j->start_latitude}}','{{$j->end_latitude}}','{{$j->start_longitude}}',
-                                            '{{$j->end_longitude}}','{{$j->kecepatan}}','{{$j->level_jalan}}')" class="btn btn-sm btn-warning mb-1" data-placement="bottom" title="Edit" style="color: white;"><i class="fa fa-edit"></i></a>
-                                         -->
-                                            <a href="{{url('list-jalan_show',$j->id)}}" class="btn btn-sm btn-warning mb-1" data-placement="bottom" title="Edit" style="color: white;"><i class="fa fa-edit"></i></a>
+                                        <a href="{{url('pelapor-datajalan-detail',$j->id)}}" class="btn btn-sm btn-success mb-1" data-placement="bottom" title="Edit" style="color: white;"><i class="fas fa-map-marker-alt"></i></a>
+                                            <a href="{{url('pelapor-datajalan',$j->id)}}" class="btn btn-sm btn-warning mb-1" data-placement="bottom" title="Edit" style="color: white;"><i class="fa fa-edit"></i></a>
 
                                             <a href="#" data-toggle="modal" data-target="#deleteData" onclick="hapus('{{$j->id}}')" class="btn btn-sm btn-danger" data-placement="bottom" title="Hapus" style="color: white;">
                                                 <i class="fa fa-trash"></i></a>
@@ -278,7 +275,7 @@ Kelola Data Jalan Dari Hardware
 
     function hapus(id) {
 
-        $("#deleteForm").attr("action", "{{url('datajalan')}}" + "/" + id)
+        $("#deleteForm").attr("action", "{{url('pelapor-datajalan')}}" + "/" + id)
         $("#deleteData").modal("show")
     }
 </script>

@@ -52,12 +52,10 @@ Kelola Data Jalan
                                         <td class="text-center">{{ Str::limit($j->end_longitude, 5)}}</td>
                                         <td class="text-center">{{$j->level_jalan}}</td>
                                         <td class="text-center">{{$j->status_verifikasi}}</td>
-                                        <td class="text-center">{{$j->nama_penginput}}</td>
+                                        <td class="text-center">{{$j->username}}</td>
                                         <td class="text-center">
 
-                                            <!-- <a href="{{url('datajalan',$j->id)}}" data-toggle="modal" data-target="#editData" onclick="edit('{{$j->id}}','{{$j->start_latitude}}','{{$j->end_latitude}}','{{$j->start_longitude}}',
-                                            '{{$j->end_longitude}}','{{$j->kecepatan}}','{{$j->level_jalan}}')" class="btn btn-sm btn-warning mb-1" data-placement="bottom" title="Edit" style="color: white;"><i class="fa fa-edit"></i></a>
-                                         -->
+                                        <a href="{{url('datajalan-detail',$j->id)}}" class="btn btn-sm btn-success mb-1" data-placement="bottom" title="Edit" style="color: white;"><i class="fas fa-map-marker-alt"></i></a>
                                             <a href="{{url('datajalan',$j->id)}}" class="btn btn-sm btn-warning mb-1" data-placement="bottom" title="Edit" style="color: white;"><i class="fa fa-edit"></i></a>
 
                                             <a href="#" data-toggle="modal" data-target="#deleteData" onclick="hapus('{{$j->id}}')" class="btn btn-sm btn-danger" data-placement="bottom" title="Hapus" style="color: white;">

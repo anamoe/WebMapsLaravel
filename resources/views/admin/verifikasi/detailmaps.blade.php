@@ -10,7 +10,7 @@ Kelola Data Jalan
   
     <div class="row">
     
-    <a href="{{ url('datajalan',$id) }}" class="btn btn-primary">Reset</a>
+    <a href="{{ url('datajalan') }}" class="btn btn-primary">Kembali</a>
   
     </div>
     <br>
@@ -24,40 +24,36 @@ Kelola Data Jalan
     <div class="modal-dialog" role="document" style="width: 100%;">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Update Data Jalan</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Detail Data Jalan</h5>
                
             </div>
             <div class="modal-body">
-                <form action="{{url('datajalan',$id)}}" method="POST" id="edit" enctype="multipart/form-data">
-                    @method('PATCH')
+                <form action="{{url('update_jalan_acc',$id)}}" method="POST" id="edit" enctype="multipart/form-data">
+                    @method('POST')
                     @csrf
                     <div class="form-group">
                         <label>Lat Awal</label>
-                        <input type="text" class="form-control" value="{{$data->start_latitude}}" name="start_latitude" id="start_latitude" placeholder=" ">
+                        <input type="text" class="form-control" value="{{$data->start_latitude}}" name="start_latitude" readonly id="start_latitude" placeholder=" ">
                     </div>
                     <div class="form-group">
                         <label>Longitude Awal</label>
-                        <input type="text" class="form-control" value="{{$data->start_longitude}}" name="start_longitude" id="start_longitude" placeholder="">
+                        <input type="text" class="form-control" value="{{$data->start_longitude}}" name="start_longitude" readonly id="start_longitude" placeholder="">
                     </div>
                     <div class="form-group">
                         <label>LAT AKHIR</label>
-                        <input type="text" class="form-control" value="{{$data->end_latitude}}" name="end_latitude" id="end_latitude" placeholder=" ">
+                        <input type="text" class="form-control" value="{{$data->end_latitude}}" name="end_latitude" readonly id="end_latitude" placeholder=" ">
                     </div>
                     <div class="form-group">
                         <label>Longitude Akhir</label>
-                        <input type="text" class="form-control" name="end_longitude" value="{{$data->end_longitude}}" id="end_longitude" placeholder=" ">
+                        <input type="text" class="form-control" name="end_longitude" value="{{$data->end_longitude}}" readonly id="end_longitude" placeholder=" ">
                     </div>
                     <div class="form-group">
                         <label>Kecepatan KM/JAM</label>
-                        <input type="text" class="form-control"  value="{{$data->kecepatan}}"name="kecepatan" id="kecepatan" placeholder=" ">
+                        <input type="text" class="form-control"  value="{{$data->kecepatan}}"name="kecepatan" readonly id="kecepatan" placeholder=" ">
                     </div>
-                    <!-- <div class="form-group">
-                        <label>Nama Petugas Isi Data</label>
-                        <input type="text" class="form-control" name="nama" value="{{$data->nama_penginput}}" id="nama" placeholder=" ">
-                    </div> -->
                     <div class="form-group">
                         <label>Status Jalan</label>
-                        <select class="form-control" name="level_jalan" id="level_jalan">
+                        <select readonly class="form-control" name="level_jalan" id="level_jalan">
                             <option value="rusak">Rusak</option>
                             <option value="sedang">Sedang</option>
                             <!-- <option value="normal">Normal</option> -->
@@ -70,12 +66,12 @@ Kelola Data Jalan
                     <center>
                        
                             <p style="font-size:20px;">Upload Foto Laporan</p></center>
-                                <div class="form-group upimage">
+                                <!-- <div class="form-group upimage">
                                     <button type="button" class="btn btn-primary btn-border btn-block"
                                         onclick="document.getElementById('addgambar').click()">
                                         <i class="fa fa-camera" aria-hidden="true" style="font-size: 50px;"></i>
                                     </button>
-                                </div>
+                                </div> -->
                                 <br>
 
                                 <div class="text-center">
@@ -85,15 +81,10 @@ Kelola Data Jalan
                                         name="foto_laporan" accept="image/*" id="addgambar"></input>
                                 </div>
                             </div>
-                    
 
 
-                    <div class="form-group">
-                        <input hidden type="number" class="form-control" name="id_status_barang" id="id_status_barang" value="4">
-                    </div>
-                    <div class="text-right">
-                        <button type="button" onclick="edit()" class="btn btn-primary">Simpan</button>
-                    </div>
+
+
                 </form>
             </div>
         </div>
@@ -105,20 +96,6 @@ Kelola Data Jalan
 
 @endsection
 @section('js')
-<script type="text/javascript">
-    function readURLfotoadd(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function(e) {
-                $('#loadfotoadd')
-                    .attr('src', e.target.result);
-            };
-
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-</script>
 
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDv-h2II7DbFQkpL9pDxNRq3GWXqS5Epts&callback=initialize"
@@ -129,6 +106,8 @@ Kelola Data Jalan
   let markersArray = [];
     let polyline = null;
     let map;
+
+    var data = @json($data);
 
 //     taruhMarker2(this,new google.maps.LatLng(  document.getElementById('start_latitude').value, document.getElementById('start_longitude').value));
 // taruhMarker1(this, new google.maps.LatLng(  document.getElementById('end_latitude').value, document.getElementById('end_longitude').value));
@@ -192,34 +171,20 @@ function initialize() {
     // drawLine()
     // }
   var propertiPeta = {
-    center:new google.maps.LatLng(-8.478316, 114.335231),
-    zoom:9,
+    center:new google.maps.LatLng(data.start_latitude, data.start_longitude),
+    zoom:15,
     mapTypeId:google.maps.MapTypeId.ROADMAP
   };
   
   var peta = new google.maps.Map(document.getElementById("googleMap"), propertiPeta);
   //set reponse two click listener 
+  lineposition1 = new google.maps.LatLng(data.start_latitude, data.start_longitude);
+  lineposition2 = new google.maps.LatLng(data.end_latitude, data.end_longitude);
+  taruhMarker(peta, lineposition1);
+  taruhMarker2(peta, lineposition2);
+  drawLine()
   
-  
-  // even listner ketika peta diklik
-  google.maps.event.addListener(peta, 'click', function(event) {
-    if(marker){
-     
-    lineposition2 = event.latLng;
-    console.log(event.latLng);
-      taruhMarker2(this, event.latLng);
-      drawLine()
-    }else{
-        lineposition1 = event.latLng;
-        taruhMarker(this, event.latLng);
-   
 
-        
-        
-    }
-
-
-  });
 
 
   var bentukjalan;

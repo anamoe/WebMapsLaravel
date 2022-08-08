@@ -17,6 +17,8 @@ class DataJalan extends Model
         'level_jalan',
         'kecepatan',
         'status_verifikasi',
-        'nama_penginput'
+        'admin_id',
+        'foto_laporan',
+        'pelapor_id',
     ];
 }

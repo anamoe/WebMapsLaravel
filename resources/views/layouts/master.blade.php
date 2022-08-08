@@ -38,7 +38,7 @@
 <body class="hold-transition layout-fixed mx-auto">
 
     <!-- Splash -->
-    <script id="rendered-js">
+    <!-- <script id="rendered-js">
         var splash = new Splash({
             background: 'rgba(255,255,255,.9)'
         });
@@ -64,7 +64,7 @@
             color: 'red',
             'font-family': 'fantasy'
         });
-    </script>
+    </script> -->
 
 
     <!-- /Splash -->
@@ -85,6 +85,7 @@
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
             </div>
+            
             <!-- /.content-header -->
 
             <!-- Main content -->
@@ -149,12 +150,16 @@
 
                                     </form>
                                 </div>
-                                <div class="col-sm-3">
+                                <div class="col-sm-2">
 
                                     <a class="btn btn-primary" href="{{url('list-jalan')}}" title="">Riwayat Data Jalan</a>
                                 </div>
-                                <div class="col-sm-3">
-
+                                <div class="col-sm-1">
+                                    @if(auth()->check())
+                                <a class="btn btn-primary" href="{{url('datajalan')}}" title="">Admin</a>
+                                @else
+                                <a class="btn btn-primary" href="{{url('login')}}" title="">Login</a>
+                                @endif
                                 </div>
                             </div>
                             <br>

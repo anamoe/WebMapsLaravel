@@ -11,6 +11,8 @@
 
     <hr class="sidebar-divider my-0">
     <!-- Nav Item - Dashboard -->
+
+    @if(Auth::user()->role == 'admin')
     <li class="nav-item {{ Request::segment(1) === 'datajalan' ? 'active' : null }}">
         <a class="nav-link" href="{{url('datajalan')}}">
             <i class="fas fa-fw fa-home"></i>
@@ -21,6 +23,16 @@
             <i class="fas fa-fw fa-home"></i>
             <span>Data Jalan Belum Verifikasi</span></a>
     </li>
+
+    @else
+
+    <li class="nav-item {{ Request::segment(1) === 'pelapor-datajalan' ? 'active' : null }}">
+        <a class="nav-link" href="{{url('pelapor-datajalan')}}">
+            <i class="fas fa-fw fa-home"></i>
+            <span>Pelaporan Jalan</span></a>
+    </li>
+
+    @endif
 
 
     <li class="nav-item {{ Request::segment(1) === 'logout' ? 'active' : null }}">

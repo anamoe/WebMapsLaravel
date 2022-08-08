@@ -50,10 +50,10 @@ Kelola Data Jalan
                         <label>Kecepatan KM/JAM</label>
                         <input type="text" class="form-control" name="kecepatan" id="kecepatan" placeholder=" ">
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label>Nama Petugas Isi Data</label>
                         <input type="text" class="form-control" name="nama" id="nama" placeholder=" ">
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <label>Status Jalan</label>
                         <select class="form-control" name="level_jalan" id="level_jalan">
@@ -65,6 +65,25 @@ Kelola Data Jalan
 
 
                     </div>
+
+                    <div class="col-sm-12">
+                        <center>
+                            <p style="font-size:20px;">Upload Foto Laporan</p></center>
+                                <div class="form-group upimage">
+                                    <button type="button" class="btn btn-primary btn-border btn-block"
+                                        onclick="document.getElementById('addgambar').click()">
+                                        <i class="fa fa-camera" aria-hidden="true" style="font-size: 50px;"></i>
+                                    </button>
+                                </div>
+                                <br>
+
+                                <div class="text-center">
+                                    <img class="img" id="loadfotoadd" src="" alt="Foto Thumbnail"
+                                        style=" height:50%; width:50%;">
+                                    <input type="file" onchange="readURLfotoadd(this);" class="d-none"
+                                        name="foto_laporan" accept="image/*" id="addgambar"></input>
+                                </div>
+                            </div>
 
 
                     <div class="form-group">
@@ -84,6 +103,20 @@ Kelola Data Jalan
 
 @endsection
 @section('js')
+<script type="text/javascript">
+    function readURLfotoadd(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('#loadfotoadd')
+                    .attr('src', e.target.result);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
 
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDv-h2II7DbFQkpL9pDxNRq3GWXqS5Epts&callback=initialize"

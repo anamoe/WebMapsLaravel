@@ -10,7 +10,7 @@ Kelola Data Jalan
   
     <div class="row">
     
-    <a href="{{ url('datajalan',$id) }}" class="btn btn-primary">Reset</a>
+    <a href="{{ url('pelapor-datajalan',$id) }}" class="btn btn-primary">Reset</a>
   
     </div>
     <br>
@@ -28,7 +28,7 @@ Kelola Data Jalan
                
             </div>
             <div class="modal-body">
-                <form action="{{url('datajalan',$id)}}" method="POST" id="edit" enctype="multipart/form-data">
+                <form action="{{url('pelapor-datajalan',$id)}}" method="POST" id="edit" enctype="multipart/form-data">
                     @method('PATCH')
                     @csrf
                     <div class="form-group">
@@ -51,10 +51,7 @@ Kelola Data Jalan
                         <label>Kecepatan KM/JAM</label>
                         <input type="text" class="form-control"  value="{{$data->kecepatan}}"name="kecepatan" id="kecepatan" placeholder=" ">
                     </div>
-                    <!-- <div class="form-group">
-                        <label>Nama Petugas Isi Data</label>
-                        <input type="text" class="form-control" name="nama" value="{{$data->nama_penginput}}" id="nama" placeholder=" ">
-                    </div> -->
+                   
                     <div class="form-group">
                         <label>Status Jalan</label>
                         <select class="form-control" name="level_jalan" id="level_jalan">
@@ -62,13 +59,10 @@ Kelola Data Jalan
                             <option value="sedang">Sedang</option>
                             <!-- <option value="normal">Normal</option> -->
                         </select>
-
-
-
                     </div>
+
                     <div class="col-sm-12">
-                    <center>
-                       
+                        <center>
                             <p style="font-size:20px;">Upload Foto Laporan</p></center>
                                 <div class="form-group upimage">
                                     <button type="button" class="btn btn-primary btn-border btn-block"
@@ -79,13 +73,13 @@ Kelola Data Jalan
                                 <br>
 
                                 <div class="text-center">
-                                <img class="img" id="loadfotoadd" src="{{url('public/foto_laporan/'.$data->foto_laporan)}}" alt="Foto Thumbnail"
+                                    <img class="img" id="loadfotoadd" src="{{url('public/foto_laporan/'.$data->foto_laporan)}}" alt="Foto Thumbnail"
                                         style=" height:50%; width:50%;">
                                     <input type="file" onchange="readURLfotoadd(this);" class="d-none"
                                         name="foto_laporan" accept="image/*" id="addgambar"></input>
                                 </div>
                             </div>
-                    
+                       
 
 
                     <div class="form-group">
@@ -105,6 +99,7 @@ Kelola Data Jalan
 
 @endsection
 @section('js')
+
 <script type="text/javascript">
     function readURLfotoadd(input) {
         if (input.files && input.files[0]) {

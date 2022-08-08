@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Kursus Speedy</title>
+    <title>WEBMAPS JALAN</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{asset('public/admin/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -64,16 +64,25 @@
                                     </div>
                                 </form>
                             </div>
-
-                            <!-- <center><h1 class="h4 text-gray-900 mb-4">Belum Mempunyai Akun ?</h1></center>
-                            
-                            <div class="text-center">
-                            <a href="{{url('register')}}"> <button  type="submit" class="btn btn-primary">
-                                        DAFTAR KURSUS
-                                   
-                                </button>
-                                </a> -->
+                            <div class="row">
+                            <div class="col-3">
                             </div>
+                                <div class="col-3">
+                                    <a href="{{url('register')}}"> <button type="submit" class="btn btn-primary">
+                                            DAFTAR
+                                        </button>
+                                    </a>
+                                </div>
+                                <div class="col-3">
+                                    <a href="{{url('/')}}"> <button type="submit" class="btn btn-primary">
+                                            HOME
+
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+
+
                         </div>
                     </div>
                 </div>
@@ -90,6 +99,7 @@
 
     <!-- Core plugin JavaScript-->
     <script src="{{asset('public/admin/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+    <script src="{{asset('public/vendor/sweetalert/sweetalert.all.js')}}"></script>
 
     <!-- Custom scripts for all pages-->
 
@@ -97,20 +107,18 @@
     <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
 
     <script>
+        $(document).ready(function() {
 
-$(document).ready(function() {
-
-@if(session()->has('message'))
-Swal.fire({
-    icon: 'success',
-    title: 'Berhasil',
-    text: "{{session()->get('message')}}",
-})
-@endif
+            @if(session()->has('message'))
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil',
+                text: "{{session()->get('message')}}",
+            })
+            @endif
 
 
-});
-
+        });
     </script>
 </body>
 

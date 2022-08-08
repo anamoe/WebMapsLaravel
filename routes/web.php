@@ -22,22 +22,33 @@ use Illuminate\Support\Facades\Route;
 Route::get('login', function () {
     
     if(auth()->check()){
-        return redirect('/');
+        return redirect('/datajalan');
     }else{
         return view('auth.login');
     }
 
 })->name('login');
 
-Route::get('/logout', [AuthController::class, 'logout']);
+Route::get('register', function () {
+    
+    if(auth()->check()){
+        return redirect('/datajalan');
+    }else{
+        return view('auth.register');
+    }
 
+})->name('login');
+
+Route::get('/logout', [AuthController::class, 'logout']);
 Route::post('login', [AuthController::class, 'postlogin'])->name('postlogin');
+Route::post('register', [AuthController::class, 'postregister'])->name('postregister');
 Route::get('/', [DataJalanController::class, 'getdata']);
 
-Route::middleware(['middleware' => 'auth'])->group(function () {
+Route::middleware(['middleware' => 'admin'])->group(function () {
 
   
     Route::resource('datajalan', KelolaDataJalanController::class);
+    Route::get('datajalan-detail/{id}',[ KelolaDataJalanController::class,'detail']);
     Route::get('createmaps',function(){
         return view('admin.verifikasi.create-maps');
     });
@@ -47,9 +58,27 @@ Route::middleware(['middleware' => 'auth'])->group(function () {
     Route::post('update_jalan_acc/{id}',[KelolaDataJalanController::class,'update_status_belum_acc']);
 
     
+    
+});
+
+
+Route::middleware(['middleware' => 'pelapor'])->group(function () {
+
+  
+    Route::get('pelapor-datajalan',[KelolaDataJalanController::class,'view_laporan_pelapor']);
+    Route::get('pelapor-datajalan-detail/{id}',[KelolaDataJalanController::class,'detail_laporan_pelapor']);
+    Route::get('pelapor-datajalan/{id}',[KelolaDataJalanController::class,'show_laporan_pelapor']);
+    Route::post('pelapor-datajalan',[KelolaDataJalanController::class,'create_laporan_pelapor']);
+    Route::patch('pelapor-datajalan/{id}',[KelolaDataJalanController::class,'update_laporan']);
+    Route::delete('pelapor-datajalan/{id}',[KelolaDataJalanController::class,'destroy_laporan']);
+    Route::get('create-laporan',[KelolaDataJalanController::class,'create_pelaporan']);
+    
+    
 });
 
 
 
+
     Route::get('list-jalan',[KelolaDataJalanController::class,'jalan_landpage']);
+    Route::get('list-jalan/{id}',[KelolaDataJalanController::class,'jalan_landpage_show']);
 

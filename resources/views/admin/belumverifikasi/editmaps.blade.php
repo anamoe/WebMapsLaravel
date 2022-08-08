@@ -58,10 +58,27 @@ Kelola Data Jalan
                             <option value="sedang">Sedang</option>
                             <!-- <option value="normal">Normal</option> -->
                         </select>
-
-
-
                     </div>
+
+                    <div class="form-group">
+                        <label>Status Verifikasi</label>
+                        <select class="form-control" name="status" id="status">
+                       
+                            <option value="ditolak">Ditolak</option>
+                            <option value="disetujui">Disetujui</option>
+                            <!-- <option value="normal">Normal</option> -->
+                        </select>
+                    </div>
+
+                    <div class="col-sm-12">
+                          
+                                <div class="text-center">
+                                    <img class="img" id="loadfotoadd" src="{{url('public/foto_laporan/'.$data->foto_laporan)}}" alt="Foto Thumbnail"
+                                        style=" height:80%; width:80%;">
+                                    <input type="file" onchange="readURLfotoadd(this);" class="d-none"
+                                        name="foto_laporan" accept="image/*" id="addgambar"></input>
+                                </div>
+                            </div>
 
 
 
@@ -209,6 +226,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 <script type="text/javascript">
        document.getElementById('level_jalan').value = "{{$data->level_jalan}}";
+        // document.getElementById('status').value = "{{$data->status_verifikasi}}";
     $(document).ready(function() {
 
         @if(session()->has('message'))
@@ -243,6 +261,10 @@ google.maps.event.addDomListener(window, 'load', initialize);
         if ($('#kecepatan').val() == "") {
             $('#kecepatan').addClass('is-invalid')
         }
+        if ($('#status').val()==null) {
+            $('#status').addClass('is-invalid')
+        }
+    
         if ($('#start_latitude').val() != "" && $('#start_longitude').val() != "" && $('#end_latitude').val() != "" && $('#end_longitude').val() != "" && $('#level_jalan').val() != "" && $('#kecepatan').val() != "") {
             $('#edit').submit();
         }
