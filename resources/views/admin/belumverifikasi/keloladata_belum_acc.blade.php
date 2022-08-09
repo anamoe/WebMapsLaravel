@@ -1,7 +1,7 @@
 @extends('layouts.admin_master')
 
 @section('title')
-Pelaporan Data Jalan
+Pelaporan Jalan
 @endsection
 
 @section('content')

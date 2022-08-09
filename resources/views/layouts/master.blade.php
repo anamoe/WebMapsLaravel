@@ -78,7 +78,7 @@
                     <div class="row mb-2">
                         <div class="col-sm-12 text-center">
 
-                            <h1 class="m-0 text-center">Pemetaan Jalan </h1>
+                            <h1 class="m-0 text-center">Pemetaan Jalan Rusak </h1>
 
                         </div><!-- /.col -->
 
@@ -157,6 +157,7 @@
                                 <div class="col-sm-1">
                                     @if(auth()->check())
                                 <a class="btn btn-primary" href="{{url('datajalan')}}" title="">Admin</a>
+                                <br><br>
                                 @else
                                 <a class="btn btn-primary" href="{{url('login')}}" title="">Login</a>
                                 @endif
