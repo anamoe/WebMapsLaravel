@@ -1,7 +1,7 @@
 @extends('layouts.admin_master')
 
 @section('title')
-Kelola Data Jalan Dari Hardware
+Pelaporan Data Jalan
 @endsection
 
 @section('content')
