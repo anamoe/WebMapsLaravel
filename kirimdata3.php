@@ -11,7 +11,7 @@
 	$kecepatan2 = "40";
 	$status_verifikasi = "belum";
 	
-	if($total >= 13000){
+	if($total >= "13000"){
 		$level_jalan = "Rusak";
 		mysqli_query($konek, "ALTER TABLE data_jalans AUTO_INCREMENT=1");
 		$simpan = mysqli_query($konek, "insert into data_jalans(start_latitude,start_longitude,end_latitude,end_longitude,level_jalan,kecepatan,status_verifikasi)values('$start_latitude','$start_longitude','$end_latitude','$end_longitude','$level_jalan','$kecepatan1','$status_verifikasi')");
@@ -20,7 +20,7 @@
 		}else{
 			echo "Gagal";
 		}
-	}elseif ($total >= 7000){
+	}elseif ($total >= "7000"){
 		$level_jalan = "Sedang";
 		mysqli_query($konek, "ALTER TABLE data_jalans AUTO_INCREMENT=1");
 		$simpan = mysqli_query($konek, "insert into data_jalans(start_latitude,start_longitude,end_latitude,end_longitude,level_jalan,kecepatan,status_verifikasi)values('$start_latitude','$start_longitude','$end_latitude','$end_longitude','$level_jalan','$kecepatan2','$status_verifikasi')");
