@@ -30,7 +30,7 @@
 			$end_latitude = $data['end_latitude'];
 			$end_longitude = $data['end_longitude'];
  			$kecepatan = $data['kecepatan'];
-			$status_verifikasi = 'belum';
+			$status_verifikasi = $data['status_verifikasi'];
  			if ($level_jalan != ''){
  				$sql = 'INSERT INTO 'data_jalans' ('start_latitude','start_longitude','end_latitude','end_longitude','level_jalan','kecepatan','status_verifikasi') VALUES ("' . $start_latitude . '","' . $start_longitude . '","' . $end_latitude . '","' . $end_longitude . '","' . $level_jalan . '","' . $kecepatan . '","' . $status_verifikasi . '");';
  				$result = mysqli_query($mysqli, $sql);
