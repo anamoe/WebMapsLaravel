@@ -70,6 +70,11 @@ Kelola Data Jalan
                         </select>
                     </div>
 
+                    <div class="form-group alasan">
+                        <label>Alasan Ditolak (Opsional Jika Ditolak)</label>
+                        <input type="text" class="form-control"  name="alasan"  id="alasan" placeholder=" ">
+                    </div>
+
                     <div class="col-sm-12">
                           
                                 <div class="text-center">
@@ -100,6 +105,8 @@ Kelola Data Jalan
 
 @endsection
 @section('js')
+
+
 
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDv-h2II7DbFQkpL9pDxNRq3GWXqS5Epts&callback=initialize"

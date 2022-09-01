@@ -53,11 +53,8 @@ Kelola Data Jalan
                     </div>
                     <div class="form-group">
                         <label>Status Jalan</label>
-                        <select readonly class="form-control" name="level_jalan" id="level_jalan">
-                            <option value="rusak">Rusak</option>
-                            <option value="sedang">Sedang</option>
-                            <!-- <option value="normal">Normal</option> -->
-                        </select>
+                        <input readonly class="form-control" name="level_jalan"   value="{{$data->level_jalan}}" id="level_jalan">
+                           
 
 
 

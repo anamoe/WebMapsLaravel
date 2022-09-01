@@ -20,5 +20,6 @@ class DataJalan extends Model
         'admin_id',
         'foto_laporan',
         'pelapor_id',
+        'alasan_ditolak'
     ];
 }

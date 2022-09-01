@@ -37,6 +37,7 @@ Pelaporan Jalan
                                     <th style="text-align:center;">Level Jalan</th>
                                     <th style="text-align:center;">Status</th>
                                     <!-- <th style="text-align:center;">Nama</th> -->
+                                    <th style="text-align:center;">Alasan</th>
                                     <th style="text-align:center;">Aksi</th>
 
                                 </thead>
@@ -52,6 +53,7 @@ Pelaporan Jalan
                                         <td class="text-center">{{ Str::limit($j->end_longitude, 5)}}</td>
                                         <td class="text-center">{{$j->level_jalan}}</td>
                                         <td class="text-center">{{$j->status_verifikasi}}</td>
+                                        <td class="text-center">{{$j->alasan_ditolak}}</td>
                                         <!-- <td class="text-center">{{$j->nama_penginput}}</td> -->
                                         <td class="text-center">
 

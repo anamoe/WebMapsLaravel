@@ -121,16 +121,33 @@ class KelolaDataJalanController extends Controller
     public function destroy($id)
     {
         //
-        DataJalan::where('id',$id)->delete();
+        DataJalan::where('id',$id)->update([
+            'status_verifikasi'=>'dihapus',
+          
+        ]);
+
         return redirect()->back()->with('message','Data berhasil dihapus');
     }
 
 
     //-------------------------------------guestt ------------------------//
 
-    public function jalan_landpage(){
-        $jalan = DataJalan::all();
-        return view('landpage.list-jalan',compact('jalan'));
+    public function jalan_landpage(Request $request){
+        $status = $request->status;
+  
+
+        if ($status != null) {
+
+            $jalan = DataJalan::where('status_verifikasi',$status)->orderBy('id','desc')->get();
+       
+       
+       
+           } else {
+            $jalan = DataJalan::orderBy('id','desc')->get();
+           
+           }
+    
+        return view('landpage.list-jalan',compact('jalan','status'));
     }
 
 
@@ -158,6 +175,7 @@ class KelolaDataJalanController extends Controller
         
         $jalan->update([
             'status_verifikasi'=>$request->status,
+            'alasan_ditolak'=>$request->alasan,
         ]);
 
         if($jalan->status_verifikasi == 'disetujui'){
@@ -276,4 +294,8 @@ class KelolaDataJalanController extends Controller
         $data = DataJalan::find($id);
         return view('pelapor.editmaps',compact('data','id'));
     }
+
+
+
+  
 }

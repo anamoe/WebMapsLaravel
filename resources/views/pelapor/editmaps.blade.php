@@ -31,35 +31,42 @@ Kelola Data Jalan
                 <form action="{{url('pelapor-datajalan',$id)}}" method="POST" id="edit" enctype="multipart/form-data">
                     @method('PATCH')
                     @csrf
+
+                    <input type="hidden" class="form-control" name="start_latitude" id="start_latitude2" value="{{$data->start_latitude}}" >    
+                        <input type="hidden" class="form-control" name="start_longitude" id="start_longitude2" value="{{$data->start_longitude}}">              
+                        <input type="hidden" class="form-control" name="end_latitude" id="end_latitude2" value="{{$data->end_latitude}}">     
+                        <input type="hidden" class="form-control" name="end_longitude" id="end_longitude2" value="{{$data->end_longitude}}">
                     <div class="form-group">
                         <label>Lat Awal</label>
-                        <input type="text" class="form-control" value="{{$data->start_latitude}}" name="start_latitude" id="start_latitude" placeholder=" ">
+                        <input type="text" class="form-control" value="{{$data->start_latitude}}" name="start_latitude" id="start_latitude" placeholder=" "disabled>
                     </div>
                     <div class="form-group">
                         <label>Longitude Awal</label>
-                        <input type="text" class="form-control" value="{{$data->start_longitude}}" name="start_longitude" id="start_longitude" placeholder="">
+                        <input type="text" class="form-control" value="{{$data->start_longitude}}" name="start_longitude" id="start_longitude" placeholder=""disabled>
                     </div>
                     <div class="form-group">
                         <label>LAT AKHIR</label>
-                        <input type="text" class="form-control" value="{{$data->end_latitude}}" name="end_latitude" id="end_latitude" placeholder=" ">
+                        <input type="text" class="form-control" value="{{$data->end_latitude}}" name="end_latitude" id="end_latitude" placeholder=" "disabled>
                     </div>
                     <div class="form-group">
                         <label>Longitude Akhir</label>
-                        <input type="text" class="form-control" name="end_longitude" value="{{$data->end_longitude}}" id="end_longitude" placeholder=" ">
+                        <input type="text" class="form-control" name="end_longitude" value="{{$data->end_longitude}}" id="end_longitude" placeholder=" "disabled>
                     </div>
-                    <div class="form-group">
-                        <label>Kecepatan KM/JAM</label>
-                        <input type="text" class="form-control"  value="{{$data->kecepatan}}"name="kecepatan" id="kecepatan" placeholder=" ">
-                    </div>
-                   
                     <div class="form-group">
                         <label>Status Jalan</label>
                         <select class="form-control" name="level_jalan" id="level_jalan">
-                            <option value="rusak">Rusak</option>
-                            <option value="sedang">Sedang</option>
-                            <!-- <option value="normal">Normal</option> -->
+                            <option value="rusak parah">Rusak Parah</option>
+                            <option value="rusak sedang">Rusak Sedang</option>
+                   
                         </select>
                     </div>
+
+
+                        <div class="form-group">
+                        <label>Kecepatan KM/JAM</label>
+                        <input type="text" class="form-control"value="{{$data->kecepatan}}" name="kecepatan" id="kecepatan" placeholder=" ">
+                    </div>
+                   
 
                     <div class="col-sm-12">
                         <center>
@@ -115,6 +122,24 @@ Kelola Data Jalan
     }
 </script>
 
+<script>
+    $('#level_jalan').on('change', function() {
+
+        var pilih = $(this).find('option:selected').val();
+        console.log(pilih)
+
+        if (pilih == 'rusak parah') {
+
+            document.getElementById('kecepatan').value = "20";
+    
+        } else {
+            document.getElementById('kecepatan').value = "40";
+        }
+
+
+    });
+</script>
+
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDv-h2II7DbFQkpL9pDxNRq3GWXqS5Epts&callback=initialize"
        ></script>
@@ -145,6 +170,8 @@ function taruhMarker(peta, posisiTitik){
 
     document.getElementById('start_latitude').value = posisiTitik.lat();
     document.getElementById('start_longitude').value = posisiTitik.lng();
+    document.getElementById('start_latitude2').value = posisiTitik.lat();
+    document.getElementById('start_longitude2').value = posisiTitik.lng();
 
    
     //how to set two marker listener
@@ -167,6 +194,8 @@ function taruhMarker2(peta, posisiTitik){
 
     document.getElementById('end_latitude').value = posisiTitik.lat();
     document.getElementById('end_longitude').value = posisiTitik.lng();
+    document.getElementById('end_latitude2').value = posisiTitik.lat();
+    document.getElementById('end_longitude2').value = posisiTitik.lng();
     
     //how to set two marker listener
 

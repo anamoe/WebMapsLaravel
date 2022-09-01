@@ -30,40 +30,42 @@ Kelola Data Jalan
             <div class="modal-body">
                 <form action="{{url('datajalan')}}" method="POST" id="tambah" enctype="multipart/form-data">
                     @csrf
-                    <div class="form-group">
-                        <label>Lat Awal</label>
-                        <input type="text" class="form-control" name="start_latitude" id="start_latitude" placeholder=" ">
+
+                    <input type="hidden" class="form-control" name="start_latitude" id="start_latitude2" placeholder=" " >    
+                        <input type="hidden" class="form-control" name="start_longitude" id="start_longitude2" placeholder="">              
+                        <input type="hidden" class="form-control" name="end_latitude" id="end_latitude2" placeholder=" ">     
+                        <input type="hidden" class="form-control" name="end_longitude" id="end_longitude2" placeholder=" ">
+                        <div class="form-group">
+                        <label>Latitude Awal</label>
+                        <input type="text" class="form-control"  id="start_latitude" placeholder=" "disabled >
                     </div>
                     <div class="form-group">
                         <label>Longitude Awal</label>
-                        <input type="text" class="form-control" name="start_longitude" id="start_longitude" placeholder="">
+                        <input type="text" class="form-control"  id="start_longitude" placeholder=""disabled>
                     </div>
                     <div class="form-group">
-                        <label>LAT AKHIR</label>
-                        <input type="text" class="form-control" name="end_latitude" id="end_latitude" placeholder=" ">
+                        <label>Latitude Akhir</label>
+                        <input type="text" class="form-control" id="end_latitude" placeholder=" "disabled>
                     </div>
                     <div class="form-group">
                         <label>Longitude Akhir</label>
-                        <input type="text" class="form-control" name="end_longitude" id="end_longitude" placeholder=" ">
+                        <input type="text" class="form-control"  id="end_longitude" placeholder=" " disabled>
                     </div>
-                    <div class="form-group">
-                        <label>Kecepatan KM/JAM</label>
-                        <input type="text" class="form-control" name="kecepatan" id="kecepatan" placeholder=" ">
-                    </div>
-                    <!-- <div class="form-group">
-                        <label>Nama Petugas Isi Data</label>
-                        <input type="text" class="form-control" name="nama" id="nama" placeholder=" ">
-                    </div> -->
+                    
+                  
                     <div class="form-group">
                         <label>Status Jalan</label>
                         <select class="form-control" name="level_jalan" id="level_jalan">
-                            <option value="rusak">Rusak</option>
-                            <option value="sedang">Sedang</option>
-                            <!-- <option value="normal">Normal</option> -->
+                            <option value="rusak parah">Rusak Parah</option>
+                            <option value="rusak sedang">Rusak Sedang</option>
+                   
                         </select>
 
 
-
+                        <div class="form-group">
+                        <label>Kecepatan KM/JAM</label>
+                        <input type="text" class="form-control" name="kecepatan" id="kecepatan" placeholder=" ">
+                    </div>
                     </div>
 
                     <div class="col-sm-12">
@@ -103,6 +105,24 @@ Kelola Data Jalan
 
 @endsection
 @section('js')
+
+<script>
+    $('#level_jalan').on('change', function() {
+
+        var pilih = $(this).find('option:selected').val();
+        console.log(pilih)
+
+        if (pilih == 'rusak parah') {
+
+            document.getElementById('kecepatan').value = "20";
+    
+        } else {
+            document.getElementById('kecepatan').value = "40";
+        }
+
+
+    });
+</script>
 <script type="text/javascript">
     function readURLfotoadd(input) {
         if (input.files && input.files[0]) {
@@ -146,6 +166,8 @@ function taruhMarker(peta, posisiTitik){
 
     document.getElementById('start_latitude').value = posisiTitik.lat();
     document.getElementById('start_longitude').value = posisiTitik.lng();
+    document.getElementById('start_latitude2').value = posisiTitik.lat();
+    document.getElementById('start_longitude2').value = posisiTitik.lng();
 
    
     //how to set two marker listener
@@ -168,6 +190,9 @@ function taruhMarker2(peta, posisiTitik){
 
     document.getElementById('end_latitude').value = posisiTitik.lat();
     document.getElementById('end_longitude').value = posisiTitik.lng();
+    document.getElementById('end_latitude2').value = posisiTitik.lat();
+    document.getElementById('end_longitude2').value = posisiTitik.lng();
+    
     
     //how to set two marker listener
     
