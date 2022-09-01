@@ -135,17 +135,34 @@ class KelolaDataJalanController extends Controller
     public function jalan_landpage(Request $request){
         $status = $request->status;
   
+        // $jalan = DataJalan::orderBy('id','desc')->get();
+        // if ($status != null) {
 
-        if ($status != null) {
-
-            $jalan = DataJalan::where('status_verifikasi',$status)->orderBy('id','desc')->get();
+        //     $jalan = DataJalan::where('status_verifikasi',$status)->orderBy('id','desc')->get();
        
        
        
-           } else {
-            $jalan = DataJalan::orderBy('id','desc')->get();
+        //    } else {
+        //     $jalan = DataJalan::orderBy('id','desc')->get();
            
-           }
+        //    }
+        if($status=='disetujui'){
+            $jalan = DataJalan::where('status_verifikasi','disetujui')->get();
+
+        }else if($status=='ditolak'){
+            $jalan = DataJalan::where('status_verifikasi','ditolak')->get();
+
+        }else if($status=='dihapus'){
+            $jalan = DataJalan::where('status_verifikasi','dihapus')->get();
+            
+        }else{
+            $jalan = DataJalan::orderBy('id','desc')->get();
+
+        }
+           if($request->has('status')){
+            return $jalan;
+        }
+
     
         return view('landpage.list-jalan',compact('jalan','status'));
     }
