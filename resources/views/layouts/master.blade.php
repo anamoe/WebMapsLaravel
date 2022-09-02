@@ -141,8 +141,8 @@
                                                 <option value="" selected disabled>Pilih Level Jalan</option>
                                                 <option value="" @if($status=='' ) {{'selected="selected"'}} @endif>
                                                     Semua</option>
-                                                <option value="sedang" @if($status=='sedang' ) {{'selected="selected"'}} @endif>Sedang</option>
-                                                <option value="rusak" @if($status=='rusak' ) {{'selected="selected"'}} @endif>Rusak</option>
+                                                <option value="rusak sedang" @if($status=='rusak sedang' ) {{'selected="selected"'}} @endif>Rusak Sedang</option>
+                                                <option value="rusak parah" @if($status=='rusak parah' ) {{'selected="selected"'}} @endif>Rusak Parah</option>
 
                                             </select>
 
@@ -266,17 +266,18 @@
 
         axios.get("{{url('/')}}/?status=" + $("select[name='status']").val())
             .then(res => {
+              
 
                 res.data.forEach(data => {
-                    if (data.level_jalan == "rusak") {
-                        array.push([data.kecepatan+'    KM/JAM', data.start_latitude, data.start_longitude]);
+                    if (data.level_jalan == "rusak parah") {
+                        array.push([data.kecepatan+'    KM/JAM', data.start_latitude, data.start_longitude, data.foto_laporan]);
                         dataKoordinat.push([data.start_latitude, data.start_longitude, data
                             .end_latitude, data.end_longitude
                         ]);
                     } else {
-                        array2.push([data.kecepatan+'   KM/JAM', data.start_latitude, data.start_longitude]);
+                        array2.push([data.kecepatan+'   KM/JAM', data.start_latitude, data.start_longitude, data.foto_laporan]);
                         dataKoordinat2.push([data.start_latitude, data.start_longitude, data
-                            .end_latitude, data.end_longitude
+                            .end_latitude, data.end_longitude 
                         ]);
                     }
                     console.log(dataKoordinat);
@@ -293,7 +294,9 @@
                         var infoWindow = new google.maps.InfoWindow({
                             content: '<div class="content "><p>' +
                                 '<h6>kec:' + array2[i][0] + '</h6>' +
-                                '</p></div>',
+                                '</p></div>'+
+                                '<img height="40"  style="margin:0 auto; display:block;" src="public/foto_laporan/' + array2[i][3] + '"/><br/>' ,
+                                
                             position: new google.maps.LatLng(array2[i][1], array2[i][2])
                         });
 
@@ -313,7 +316,8 @@
                         var infoWindow = new google.maps.InfoWindow({
                             content: '<div class="content "><p>' +
                                 '<h6>kec:' + array[i][0] + '</h6>' +
-                                '</p></div>',
+                                '</p></div>'+
+                                '<img height="40s" style="margin:0 auto; display:block;" src="public/foto_laporan/' + array[i][3] + '"/><br/>' ,
 
                             position: new google.maps.LatLng(array[i][1], array[i][2])
                         });

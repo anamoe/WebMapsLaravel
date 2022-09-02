@@ -9,19 +9,29 @@ History Data Jalan
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
 
     <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
+    
   </div>
 
   <div class="col-md-12 col-xs-12">
+    
     <div class="card">
 
       <div class="card-body">
         <div class="table-responsive">
 
 
-          <h2><label> Laporan Data Kelola Jalan Berlubang</label></h2>
+          <h2><label> Riwayat Data Jalan Rusak</label></h2>
           <div class="form-row">
             <div class="col-sm-12">
-
+            
+            
+                <div class="text-right">
+      
+                    <a href="{{url('')}}" class="btn btn-primary" >
+                        <span class=""> Kembali Dashboard</span>
+                    </a>
+                </div>
+          
 
               <form action="{{url('list-jalan')}}" method="get">
 
@@ -55,7 +65,7 @@ History Data Jalan
               <th style="text-align:center;">Long Akhir</th>
               <th style="text-align:center;">Status Jalan</th>
               <th style="text-align:center;">Status</th>
-              <th style="text-align:center;">Alasan Ditolak</th>
+              <th style="text-align:center;">Keterangan</th>
               <th style="text-align:center;">Lihat Maps</th>
             </thead>
 

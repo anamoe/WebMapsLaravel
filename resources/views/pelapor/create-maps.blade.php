@@ -64,12 +64,14 @@ Kelola Data Jalan
                    
                         </select>
 
-
+                        </div>
                         <div class="form-group">
                         <label>Kecepatan KM/JAM</label>
-                        <input type="text" class="form-control" name="kecepatan" id="kecepatan" placeholder=" ">
+                        <input type="text" class="form-control"  id="kecepatan" placeholder=" " disabled>
                     </div>
-                    </div>
+
+                    <input type="hidden" class="form-control" name="kecepatan" id="kecepatans" placeholder=" ">
+                   
                     <div class="col-sm-12">
                         <center>
                             <p style="font-size:20px;">Upload Foto Laporan</p></center>
@@ -118,9 +120,11 @@ Kelola Data Jalan
         if (pilih == 'rusak parah') {
 
             document.getElementById('kecepatan').value = "20";
+            document.getElementById('kecepatans').value = "20";
     
         } else {
             document.getElementById('kecepatan').value = "40";
+            document.getElementById('kecepatans').value = "40";
         }
 
 

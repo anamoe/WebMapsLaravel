@@ -7,101 +7,99 @@ Kelola Data Jalan
 @section('content')
 <div class="container-fluid">
 
-  
+
     <div class="row">
-    
-    <a href="{{ url('createmaps') }}" class="btn btn-primary">Reset</a>
-  
+
+        <a href="{{ url('createmaps') }}" class="btn btn-primary">Reset</a>
+
     </div>
     <br>
-<div class="row">
-  <div id="googleMap" style="width:100%;height:400px;"></div>
-  </div>
-
-  
-</div>
-
-    <div class="modal-dialog" role="document" style="width: 100%;">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Tambah Data Jalan</h5>
-               
-            </div>
-            <div class="modal-body">
-                <form action="{{url('datajalan')}}" method="POST" id="tambah" enctype="multipart/form-data">
-                    @csrf
-
-                    <input type="hidden" class="form-control" name="start_latitude" id="start_latitude2" placeholder=" " >    
-                        <input type="hidden" class="form-control" name="start_longitude" id="start_longitude2" placeholder="">              
-                        <input type="hidden" class="form-control" name="end_latitude" id="end_latitude2" placeholder=" ">     
-                        <input type="hidden" class="form-control" name="end_longitude" id="end_longitude2" placeholder=" ">
-                        <div class="form-group">
-                        <label>Latitude Awal</label>
-                        <input type="text" class="form-control"  id="start_latitude" placeholder=" "disabled >
-                    </div>
-                    <div class="form-group">
-                        <label>Longitude Awal</label>
-                        <input type="text" class="form-control"  id="start_longitude" placeholder=""disabled>
-                    </div>
-                    <div class="form-group">
-                        <label>Latitude Akhir</label>
-                        <input type="text" class="form-control" id="end_latitude" placeholder=" "disabled>
-                    </div>
-                    <div class="form-group">
-                        <label>Longitude Akhir</label>
-                        <input type="text" class="form-control"  id="end_longitude" placeholder=" " disabled>
-                    </div>
-                    
-                  
-                    <div class="form-group">
-                        <label>Status Jalan</label>
-                        <select class="form-control" name="level_jalan" id="level_jalan">
-                            <option value="rusak parah">Rusak Parah</option>
-                            <option value="rusak sedang">Rusak Sedang</option>
-                   
-                        </select>
-
-
-                        <div class="form-group">
-                        <label>Kecepatan KM/JAM</label>
-                        <input type="text" class="form-control" name="kecepatan" id="kecepatan" placeholder=" ">
-                    </div>
-                    </div>
-
-                    <div class="col-sm-12">
-                        <center>
-                            <p style="font-size:20px;">Upload Foto Laporan</p></center>
-                                <div class="form-group upimage">
-                                    <button type="button" class="btn btn-primary btn-border btn-block"
-                                        onclick="document.getElementById('addgambar').click()">
-                                        <i class="fa fa-camera" aria-hidden="true" style="font-size: 50px;"></i>
-                                    </button>
-                                </div>
-                                <br>
-
-                                <div class="text-center">
-                                    <img class="img" id="loadfotoadd" src="" alt="Foto Thumbnail"
-                                        style=" height:50%; width:50%;">
-                                    <input type="file" onchange="readURLfotoadd(this);" class="d-none"
-                                        name="foto_laporan" accept="image/*" id="addgambar"></input>
-                                </div>
-                            </div>
-
-
-                    <div class="form-group">
-                        <input hidden type="number" class="form-control" name="id_status_barang" id="id_status_barang" value="4">
-                    </div>
-                    <div class="text-right">
-                        <button type="button" onclick="tambah()" class="btn btn-primary">Simpan</button>
-                    </div>
-                </form>
-            </div>
-        </div>
+    <div class="row">
+        <div id="googleMap" style="width:100%;height:400px;"></div>
     </div>
 
 
+</div>
 
-  
+<div class="modal-dialog" role="document" style="width: 100%;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Tambah Data Jalan</h5>
+
+        </div>
+        <div class="modal-body">
+            <form action="{{url('datajalan')}}" method="POST" id="tambah" enctype="multipart/form-data">
+                @csrf
+
+                <input type="hidden" class="form-control" name="start_latitude" id="start_latitude2" placeholder=" ">
+                <input type="hidden" class="form-control" name="start_longitude" id="start_longitude2" placeholder="">
+                <input type="hidden" class="form-control" name="end_latitude" id="end_latitude2" placeholder=" ">
+                <input type="hidden" class="form-control" name="end_longitude" id="end_longitude2" placeholder=" ">
+                <div class="form-group">
+                    <label>Latitude Awal</label>
+                    <input type="text" class="form-control" id="start_latitude" placeholder=" " disabled>
+                </div>
+                <div class="form-group">
+                    <label>Longitude Awal</label>
+                    <input type="text" class="form-control" id="start_longitude" placeholder="" disabled>
+                </div>
+                <div class="form-group">
+                    <label>Latitude Akhir</label>
+                    <input type="text" class="form-control" id="end_latitude" placeholder=" " disabled>
+                </div>
+                <div class="form-group">
+                    <label>Longitude Akhir</label>
+                    <input type="text" class="form-control" id="end_longitude" placeholder=" " disabled>
+                </div>
+
+
+                <div class="form-group">
+                    <label>Status Jalan</label>
+                    <select class="form-control" name="level_jalan" id="level_jalan">
+                        <option value="rusak parah">Rusak Parah</option>
+                        <option value="rusak sedang">Rusak Sedang</option>
+
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Kecepatan KM/JAM</label>
+                    <input type="text" class="form-control"  id="kecepatan" placeholder=" ">
+                </div>
+                <input type="hidden" class="form-control" name="kecepatan" id="kecepatans" placeholder=" ">
+
+                <div class="col-sm-12">
+                    <center>
+                        <p style="font-size:20px;">Upload Foto Laporan</p>
+                    </center>
+                    <div class="form-group upimage">
+                        <button type="button" class="btn btn-primary btn-border btn-block" onclick="document.getElementById('addgambar').click()">
+                            <i class="fa fa-camera" aria-hidden="true" style="font-size: 50px;"></i>
+                        </button>
+                    </div>
+                    <br>
+
+                    <div class="text-center">
+                        <img class="img" id="loadfotoadd" src="" alt="Foto Thumbnail" style=" height:50%; width:50%;">
+                        <input type="file" onchange="readURLfotoadd(this);" class="d-none" name="foto_laporan" accept="image/*" id="addgambar"></input>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <input hidden type="number" class="form-control" name="id_status_barang" id="id_status_barang" value="4">
+                </div>
+                <div class="text-right">
+                    <button type="button" onclick="tambah()" class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
 
 @endsection
 @section('js')
@@ -111,14 +109,17 @@ Kelola Data Jalan
 
         var pilih = $(this).find('option:selected').val();
         console.log(pilih)
-
         if (pilih == 'rusak parah') {
 
             document.getElementById('kecepatan').value = "20";
-    
+            document.getElementById('kecepatans').value = "20";
+
         } else {
             document.getElementById('kecepatan').value = "40";
+            document.getElementById('kecepatans').value = "40";
         }
+
+
 
 
     });
@@ -138,140 +139,137 @@ Kelola Data Jalan
     }
 </script>
 
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDv-h2II7DbFQkpL9pDxNRq3GWXqS5Epts&callback=initialize"
-       ></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDv-h2II7DbFQkpL9pDxNRq3GWXqS5Epts&callback=initialize"></script>
 <script>
-  var marker;
-  var marker2;
-  let markersArray = [];
+    var marker;
+    var marker2;
+    let markersArray = [];
     let polyline = null;
     let map;
 
-  
-function taruhMarker(peta, posisiTitik){
-    // membuat Marker
-    if( marker){
-      // pindahkan marker
-      marker.setPosition(posisiTitik);
-    
-    } else {
-      // buat marker baru
-      marker = new google.maps.Marker({
-        position: posisiTitik,
-        map: peta
-      });
+
+    function taruhMarker(peta, posisiTitik) {
+        // membuat Marker
+        if (marker) {
+            // pindahkan marker
+            marker.setPosition(posisiTitik);
+
+        } else {
+            // buat marker baru
+            marker = new google.maps.Marker({
+                position: posisiTitik,
+                map: peta
+            });
+
+        }
+
+        document.getElementById('start_latitude').value = posisiTitik.lat();
+        document.getElementById('start_longitude').value = posisiTitik.lng();
+        document.getElementById('start_latitude2').value = posisiTitik.lat();
+        document.getElementById('start_longitude2').value = posisiTitik.lng();
+
+
+        //how to set two marker listener
 
     }
 
-    document.getElementById('start_latitude').value = posisiTitik.lat();
-    document.getElementById('start_longitude').value = posisiTitik.lng();
-    document.getElementById('start_latitude2').value = posisiTitik.lat();
-    document.getElementById('start_longitude2').value = posisiTitik.lng();
+    function taruhMarker2(peta, posisiTitik) {
+        // membuat Marker
+        if (marker2) {
+            // pindahkan marker
+            marker2.setPosition(posisiTitik);
 
-   
-    //how to set two marker listener
+        } else {
+            // buat marker baru
+            marker2 = new google.maps.Marker({
+                position: posisiTitik,
+                map: peta
+            });
 
-}
-function taruhMarker2(peta, posisiTitik){
-    // membuat Marker
-    if( marker2){
-      // pindahkan marker
-      marker2.setPosition(posisiTitik);
-    
-    } else {
-      // buat marker baru
-      marker2 = new google.maps.Marker({
-        position: posisiTitik,
-        map: peta
-      });
-      
-    }
+        }
 
-    document.getElementById('end_latitude').value = posisiTitik.lat();
-    document.getElementById('end_longitude').value = posisiTitik.lng();
-    document.getElementById('end_latitude2').value = posisiTitik.lat();
-    document.getElementById('end_longitude2').value = posisiTitik.lng();
-    
-    
-    //how to set two marker listener
-    
- 
+        document.getElementById('end_latitude').value = posisiTitik.lat();
+        document.getElementById('end_longitude').value = posisiTitik.lng();
+        document.getElementById('end_latitude2').value = posisiTitik.lat();
+        document.getElementById('end_longitude2').value = posisiTitik.lng();
 
-}
-  
-  
-function initialize() {
-    var lineposition1;
-    var lineposition2;
-  var propertiPeta = {
-    center:new google.maps.LatLng(-8.478316, 114.335231),
-    zoom:9,
-    mapTypeId:google.maps.MapTypeId.ROADMAP
-  };
-  
-  var peta = new google.maps.Map(document.getElementById("googleMap"), propertiPeta);
-  //set reponse two click listener 
-  
-  
-  // even listner ketika peta diklik
-  google.maps.event.addListener(peta, 'click', function(event) {
-    if(marker){
-     
-    lineposition2 = event.latLng;
-      taruhMarker2(this, event.latLng);
-      drawLine()
-    }else{
-        lineposition1 = event.latLng;
-        taruhMarker(this, event.latLng);
-   
 
-        
-        
+        //how to set two marker listener
+
+
+
     }
 
 
-  });
+    function initialize() {
+        var lineposition1;
+        var lineposition2;
+        var propertiPeta = {
+            center: new google.maps.LatLng(-8.478316, 114.335231),
+            zoom: 9,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
+        var peta = new google.maps.Map(document.getElementById("googleMap"), propertiPeta);
+        //set reponse two click listener 
 
 
-  var bentukjalan;
+        // even listner ketika peta diklik
+        google.maps.event.addListener(peta, 'click', function(event) {
+            if (marker) {
 
-  function drawLine(){
-    var jalan = [
-        lineposition1,
-        lineposition2
-  ];
-    if(bentukjalan) {
-       bentukjalan.setPath(jalan);
-   } else {
-    bentukjalan = new google.maps.Polyline({
-    path: jalan,
-    geodesic: true,
-    strokeColor: '#FF0000',
-    strokeOpacity: 1.0,
-    strokeWeight: 2
-  });
-  bentukjalan.setMap(peta);
-   }
-   
-   
+                lineposition2 = event.latLng;
+                taruhMarker2(this, event.latLng);
+                drawLine()
+            } else {
+                lineposition1 = event.latLng;
+                taruhMarker(this, event.latLng);
 
 
-  }
-  
-
-}
 
 
-// event jendela di-load  
-google.maps.event.addDomListener(window, 'load', initialize);
-  
+            }
 
+
+        });
+
+
+        var bentukjalan;
+
+        function drawLine() {
+            var jalan = [
+                lineposition1,
+                lineposition2
+            ];
+            if (bentukjalan) {
+                bentukjalan.setPath(jalan);
+            } else {
+                bentukjalan = new google.maps.Polyline({
+                    path: jalan,
+                    geodesic: true,
+                    strokeColor: '#FF0000',
+                    strokeOpacity: 1.0,
+                    strokeWeight: 2
+                });
+                bentukjalan.setMap(peta);
+            }
+
+
+
+
+        }
+
+
+    }
+
+
+    // event jendela di-load  
+    google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 <script type="text/javascript">
     $(document).ready(function() {
 
-        @if(session()->has('message'))
+        @if(session() - > has('message'))
         Swal.fire({
             icon: 'success',
             title: 'Berhasil',
@@ -331,5 +329,5 @@ google.maps.event.addDomListener(window, 'load', initialize);
         $("#deleteData").modal("show")
     }
 </script>
-  
+
 @endsection

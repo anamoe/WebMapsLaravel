@@ -64,9 +64,9 @@ Kelola Data Jalan
 
                         <div class="form-group">
                         <label>Kecepatan KM/JAM</label>
-                        <input type="text" class="form-control"value="{{$data->kecepatan}}" name="kecepatan" id="kecepatan" placeholder=" ">
+                        <input type="text" class="form-control"value="{{$data->kecepatan}}"  id="kecepatan" placeholder=" ">
                     </div>
-                   
+                    <input type="hidden" class="form-control" value="{{$data->kecepatan}}"name="kecepatan" id="kecepatans" placeholder=" ">
 
                     <div class="col-sm-12">
                         <center>
@@ -131,9 +131,11 @@ Kelola Data Jalan
         if (pilih == 'rusak parah') {
 
             document.getElementById('kecepatan').value = "20";
+            document.getElementById('kecepatans').value = "20";
     
         } else {
             document.getElementById('kecepatan').value = "40";
+            document.getElementById('kecepatans').value = "40";
         }
 
 
