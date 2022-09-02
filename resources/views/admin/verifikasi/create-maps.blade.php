@@ -269,7 +269,7 @@ Kelola Data Jalan
 <script type="text/javascript">
     $(document).ready(function() {
 
-        @if(session() - > has('message'))
+        @if(session()->has('message'))
         Swal.fire({
             icon: 'success',
             title: 'Berhasil',
