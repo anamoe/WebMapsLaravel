@@ -12,11 +12,11 @@ class DataJalanController extends Controller
 
         $status= $request->status;
 
-        if($status=='rusak'){
-            $jalan = DataJalan::where('level_jalan','rusak')->where('status_verifikasi','disetujui')->get();
+        if($status=='rusak parah'){
+            $jalan = DataJalan::where('level_jalan','rusak parah')->where('status_verifikasi','disetujui')->get();
 
-        }else if($status=='sedang'){
-            $jalan = DataJalan::where('level_jalan','sedang')->where('status_verifikasi','disetujui')->get();
+        }else if($status=='rusak sedang'){
+            $jalan = DataJalan::where('level_jalan','rusak sedang')->where('status_verifikasi','disetujui')->get();
 
         }else{
             $jalan = DataJalan::where('status_verifikasi','disetujui')->get();
