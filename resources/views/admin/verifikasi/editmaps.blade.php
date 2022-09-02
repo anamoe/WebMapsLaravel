@@ -283,7 +283,7 @@ Kelola Data Jalan
     document.getElementById('level_jalan').value = "{{$data->level_jalan}}";
     $(document).ready(function() {
 
-        @if(session() - > has('message'))
+        @if(session()->has('message'))
         Swal.fire({
             icon: 'success',
             title: 'Berhasil',
